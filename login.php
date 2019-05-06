@@ -1,20 +1,14 @@
 <?php
-
-session_start();
-
-if(!empty($_POST["loginname"]) && $_POST["loginname"] === "root") {
-    $_SESSION["user"] = "root";
-    if(isset($_COOKIE["basket"])) {
-        setcookie('basket', '', time() - 3600, '/');
-        unset($_COOKIE['cookie_name']);
-        $_SESSION["basket"] = json_decode($_COOKIE["basket"]);
-    } else {
-        $_SESSION["basket"] = array();
-    }
-    header("Location: index.php");
+require 'inc/head.php';
+if (!empty($_POST['loginname'])) {
+    $_SESSION["login"] = $_POST['loginname'];
+    header ("location: index.php");
 }
-
-require 'inc/head.php'; ?>
+if ((!empty($_SESSION["login"])))
+{
+    header('Location:index.php');
+}
+?>
 
 <div class="container" style="margin-top:40px">
 <div class="row">

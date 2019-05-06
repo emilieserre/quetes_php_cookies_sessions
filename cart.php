@@ -1,41 +1,55 @@
 <?php
-session_start();
-require 'inc/head.php'; ?>
-    <section class="cookies container-fluid">
-        <div class="row">
-            <?php
-            if(isset($_SESSION["user"]) && isset($_GET["basket"])) {
-                unset($_SESSION["basket"]);
-                header("Location: /cart.php");
-            }
-            echo '<div class="container">
-                <div class="row">
-                  <div class="col-12 text-center">
-              ';
-            if(isset($_SESSION["user"]) && isset($_SESSION["basket"])) {
-                if(count($_SESSION["basket"]) === 0) {
-                    echo 'votre panier est vide !!';
-                } else {
-                    echo 'Votre panier <br>';
-                    for($i=0;$i<count($_SESSION["basket"]);$i++) {
-                        echo $_SESSION["basket"][$i].'<br>';
-                    }
-                }
-            }
-            echo '</div>
-                </div>
-              </div>
-              ';
-            if(count($_SESSION["basket"]) > 0) {
-                echo '<div class="container mt-5">
-                <div class="row">
-                  <div class="col-12 text-center">
-                    <a href="?basket=empty" class="btn btn-primary">vider le panier</a>
-                  </div>
-                </div>
-              </div>';
-            }
-            ?>
-        </div>
-    </section>
-<?php require 'inc/foot.php'; ?>
+require 'inc/head.php';
+require "connect.php";
+?>
+<section class="cookies container-fluid">
+
+    <h2>Panier</h2>
+    <p>Vos achats</p>
+    <table class="cookie">
+        <thead>
+        <tr>
+            <th>Article</th>
+            <th>Quantité</th>
+        </tr>
+        </thead>
+        <tbody>
+        <?php
+        if (empty($_COOKIE["panier"])) : ?>
+            <tr>
+                <td>Vous n'avez pas d'article!</td>
+            </tr>
+
+        <?php else : ?>
+            <?php if (!empty($_COOKIE['panier']['pecanNuts'])) : ?>
+                <tr>
+                    <td>Pecan Nuts</td>
+                    <td><?= $_COOKIE['panier']['pecanNuts'] ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php if (!empty($_COOKIE['panier']['chocolateChips'])) : ?>
+                <tr>
+                    <td>Chocolate Chips</td>
+                    <td><?= $_COOKIE['panier']['chocolateChips'] ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php if (!empty($_COOKIE['panier']['chocolateCookie'])) : ?>
+                <tr>
+                    <td>Chocolate Cookie</td>
+                    <td><?= $_COOKIE['panier']['chocolateCookie'] ?></td>
+                </tr>
+            <?php endif; ?>
+            <?php if (!empty($_COOKIE['panier']['mmsCookies'])) : ?>
+                <tr>
+                    <td>M&ms Cookie</td>
+                    <td><?= $_COOKIE['panier']['mmsCookies'] ?></td>
+                </tr>
+            <?php endif; ?>
+
+        <?php endif; ?>
+        </tbody>
+    </table>
+</section>
+
+
+
