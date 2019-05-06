@@ -6,6 +6,25 @@ h1, h2, h3, h4,
 strong {
     font-family: 'Kaushan Script', cursive;
 }
+.buyButton{
+    background-color: lightseagreen;
+    color: black;
+    margin-top: 1%;
+}
+.deconnexionButton{
+    background-color: coral;
+    color: black;
+    margin-top: 1%;
+}
+
+.loginBoxSubmit{
+    background-color: #fbdd9b;
+    color:black;
+}
+
+.loginBox{
+    margin-top: 40px;
+}
 
 .navbar-brand{
     padding: 5px 15px;
@@ -35,8 +54,9 @@ section.cookies{
     min-height: 90vH;
 }
 /* Source : https://bootsnipp.com/snippets/featured/sign-in-panel */
-.panel-heading {
+.loginBoxHead {
     padding: 5px 15px;
+    background-color: #fbdd9b;
 }
 
 .panel-footer {
