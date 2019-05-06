@@ -1,4 +1,21 @@
-<?php require 'inc/head.php'; ?>
+<?php
+
+session_start();
+
+if(!empty($_POST["loginname"]) && $_POST["loginname"] === "root") {
+    $_SESSION["user"] = "root";
+    if(isset($_COOKIE["basket"])) {
+        setcookie('basket', '', time() - 3600, '/');
+        unset($_COOKIE['cookie_name']);
+        $_SESSION["basket"] = json_decode($_COOKIE["basket"]);
+    } else {
+        $_SESSION["basket"] = array();
+    }
+    header("Location: index.php");
+}
+
+require 'inc/head.php'; ?>
+
 <div class="container" style="margin-top:40px">
 <div class="row">
   <div class="col-sm-6 col-md-4 col-md-offset-4">
