@@ -1,4 +1,16 @@
-<?php require 'inc/head.php'; ?>
+<?php
+session_start();
+if(!isset($_SESSION["user"])) {
+header("Location: login.php");
+}
+if(!empty($_GET["add_to_cart"]) && isset($_SESSION["user"])) {
+if(!isset($_SESSION["basket"])) {
+$_SESSION["basket"] = array();
+}
+array_push($_SESSION["basket"], $_GET["add_to_cart"]);
+echo '<pre>'.print_r($_SESSION["basket"], true).'</pre>';
+}
+require 'inc/head.php'; ?>
 <section class="cookies container-fluid">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
@@ -15,7 +27,7 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <figure class="thumbnail text-center">
-        <img src="assets/img/product-36.jpg" alt="cookies choclate chips" class="img-responsive">
+        <img src="assets/img/product-36.jpg" alt="cookies chocolate chips" class="img-responsive">
         <figcaption class="caption">
           <h3>Chocolate chips</h3>
           <p>Cooked by Bernadette !</p>
@@ -27,7 +39,7 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <figure class="thumbnail text-center">
-        <img src="assets/img/product-58.jpg" alt="cookies choclate chips" class="img-responsive">
+        <img src="assets/img/product-58.jpg" alt="cookies chocolate chips" class="img-responsive">
         <figcaption class="caption">
           <h3>Chocolate cookie</h3>
           <p>Cooked by Bernadette !</p>
@@ -39,7 +51,7 @@
     </div>
     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
       <figure class="thumbnail text-center">
-        <img src="assets/img/product-32.jpg" alt="cookies choclate chips" class="img-responsive">
+        <img src="assets/img/product-32.jpg" alt="cookies chocolate chips" class="img-responsive">
         <figcaption class="caption">
           <h3>M&M's&copy; cookies</h3>
           <p>Cooked by Penny !</p>
