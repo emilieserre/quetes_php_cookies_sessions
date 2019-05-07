@@ -1,6 +1,3 @@
-<?php
-session_start();
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +12,7 @@ session_start();
 <body>
 <header>
     <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container-fluid">
+        <div class="navBar container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
                         data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
@@ -31,27 +28,26 @@ session_start();
             </div>
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#">Chocolates chips</a></li>
-                    <li><a href="#">Nuts</a></li>
-                    <li><a href="#">Gluten full</a></li>
+                    <li><a class="menuBtn" href="#">Chocolates chips</a></li>
+                    <li><a class="menuBtn" href="#">Nuts</a></li>
+                    <li><a class="menuBtn" href="#">Gluten full</a></li>
+                    <li><a class="logoutBtn" href="logout.php">Logout</a></li>
                     <li>
                         <a href="/cart.php" class="btn btn-warning navbar-btn">
                             <span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span>
                             Cart
                         </a>
                     </li>
-                    <a href="/login.php" class="btn btn-warning navbar-btn">Log In</a>
-                    <a href="/logout.php" class="btn btn-warning navbar-btn">Log Out</a>
-
                 </ul>
             </div>
         </div>
     </nav>
-    <div class="container-fluid text-right">
-        <strong><?php
-            $hello ="Hello";
-            $ep="!";
-            if (isset($_SESSION['username'])) echo $hello." ".$_SESSION['username']." ".$ep?>
-        </strong>
+    <div class="container-fluid text-center title_size">
+        <strong>Hello <?php
+            if  (isset($_SESSION['name'])) {
+                echo $_SESSION['name'];
+            } else {
+                echo "Wilder";
+            } ?> !</strong>
     </div>
 </header>
