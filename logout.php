@@ -1,6 +1,4 @@
 <?php
-session_start();
+require 'inc/head.php';
 session_destroy();
-header('location: login.php');
-exit;
-
+header('Location: login.php');

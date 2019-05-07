@@ -1,6 +1,5 @@
 <?php
 require 'inc/head.php';
-require "connect.php";
 ?>
 
     <section class="cookies container-fluid">
@@ -16,12 +15,10 @@ require "connect.php";
             </thead>
             <tbody>
             <?php
-            if (empty($_COOKIE["panier"])) : ?>
-                <tr>
-                    <td>Vous n'avez pas d'article!</td>
-                </tr>
-
-            <?php else : ?>
+            if (!isset($_SESSION['username'])) {
+                header('Location: login.php');
+            }
+            ?>
                 <?php if (!empty($_COOKIE['panier']['pecanNuts'])) : ?>
                     <tr>
                         <td>Pecan Nuts</td>
@@ -46,15 +43,10 @@ require "connect.php";
                         <td><?= $_COOKIE['panier']['mmsCookies'] ?></td>
                     </tr>
                 <?php endif; ?>
-
-            <?php endif; ?>
             </tbody>
         </table>
-        <div><a href="#"><button class="buyButton btn">Buy</button></a></div>
-        <div><a href="logout.php"><button class="deconnexionButton btn">Deconnexion</button></a></div>
     </section>
 
-
-
-
 <?php require 'inc/foot.php'; ?>
+
+

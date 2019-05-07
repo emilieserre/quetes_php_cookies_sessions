@@ -1,6 +1,6 @@
 <?php
+session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,10 +8,9 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>The Cookie Factory</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="assets/styles.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/styles.css" />
 </head>
 <body>
 <header>
@@ -25,13 +24,11 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" href="/" >
                     <img class="pull-left" src="assets/img/cookie_funny_clipart.png" alt="The Cookies Factory logo">
                     <h1>The Cookies Factory</h1>
                 </a>
             </div>
-
-
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#">Chocolates chips</a></li>
@@ -43,14 +40,18 @@
                             Cart
                         </a>
                     </li>
+                    <a href="/login.php" class="btn btn-warning navbar-btn">Log In</a>
+                    <a href="/logout.php" class="btn btn-warning navbar-btn">Log Out</a>
+
                 </ul>
             </div>
         </div>
     </nav>
     <div class="container-fluid text-right">
-        <strong>Hello <?php if (isset($_SESSION['user'])) {
-                echo    $_SESSION['user']; }else{
-                echo 'Wilder';
-            } ?></strong>
+        <strong><?php
+            $hello ="Hello";
+            $ep="!";
+            if (isset($_SESSION['username'])) echo $hello." ".$_SESSION['username']." ".$ep?>
+        </strong>
     </div>
 </header>

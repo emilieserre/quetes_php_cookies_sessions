@@ -6,12 +6,15 @@ h1, h2, h3, h4,
 strong {
     font-family: 'Kaushan Script', cursive;
 }
-.buyButton{
+.loginBtn{
+    background-color: coral;
+}
+.loginButton{
     background-color: lightseagreen;
     color: black;
     margin-top: 1%;
 }
-.deconnexionButton{
+.logoutButton{
     background-color: coral;
     color: black;
     margin-top: 1%;
